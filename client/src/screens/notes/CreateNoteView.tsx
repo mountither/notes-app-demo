@@ -21,8 +21,6 @@ const CreateNoteView = () => {
 
     const { title, html } = getTextEditorData(state) || {}
 
-    console.log(title, html)
-
     const [_textEditorHTML, setTextEditorHTML] = useState<string | undefined>(html);
     const [_title, setTitle] = useState<string | undefined>(title);
 

@@ -4,6 +4,7 @@ import { useDispatch } from 'react-redux'
 import { signOutUser } from '../../common/api/auth'
 import Button from '../../common/components/Button'
 import ScreenContainer from '../../common/layout/ScreenContainer'
+import { resetTextEditor } from '../../redux/slices/TextEditorSlice'
 import { removeUser } from '../../redux/slices/UserAuthSlice'
 
 const AccountView = () => {
@@ -16,6 +17,7 @@ const AccountView = () => {
             setSigningOut(true)
             await signOutUser();
             dispatch(removeUser())
+            dispatch(resetTextEditor())
             setSigningOut(false)
         } catch (error) {
             console.log(error)
