@@ -61,56 +61,68 @@ const SignInView = () => {
   const navigation = useNavigation<StackNavigationProp<any>>();
 
   return (
-    <ScrollView
-      style={{ padding: 20 }}
+    <>
+      <ScrollView
+        style={{ padding: 20 }}
 
-    >
-      <TouchableOpacity style={{ alignSelf: "flex-start" }}
-        onPress={() => navigation.navigate("SignUpView")}
       >
-        <Text style={{ textDecorationLine: "underline", fontWeight: "bold", fontSize: 15 }}>Sign Up</Text>
-      </TouchableOpacity>
-      <KeyboardAvoidingView style={{ marginTop: 70 }}>
-        <Controller
-          control={control}
-          rules={{
-            required: true,
-          }}
-          render={({ field: { onChange, onBlur, value } }) => (
-            <InputBox
-              onBlur={onBlur}
-              onChangeText={onChange}
-              placeholder="Enter your username"
-              returnKeyType="next"
-              label={"Username"}
-              blurOnSubmit={false}
-              value={value}
-              error={errors.username}
-            />
-          )}
-          name="username"
-        />
+        <TouchableOpacity style={{ alignSelf: "flex-start" }}
+          onPress={() => navigation.navigate("SignUpView")}
+        >
+          <Text style={{ textDecorationLine: "underline", fontWeight: "bold", fontSize: 15 }}>Sign Up</Text>
+        </TouchableOpacity>
 
-        <Controller
-          control={control}
-          rules={{
-            required: true,
-          }}
-          render={({ field: { onChange, onBlur, value } }) => (
-            <InputBox
-              onBlur={onBlur}
-              containerStyles={{ marginTop: 50 }}
-              onChangeText={onChange}
-              placeholder="••••••••"
-              label='Password'
-              value={value}
-              secureTextEntry={true}
-              error={errors.password}
-            />
-          )}
-          name="password"
-        />
-        <View style={{ marginTop: 80 }}>
+        <View style={{marginTop:60}}>
+          <Controller
+            control={control}
+            rules={{
+              required: true,
+            }}
+            render={({ field: { onChange, onBlur, value } }) => (
+              <InputBox
+                onBlur={onBlur}
+                onChangeText={onChange}
+                placeholder="Enter your username"
+                returnKeyType="next"
+                label={"Username"}
+                blurOnSubmit={false}
+                value={value}
+                error={errors.username}
+              />
+            )}
+            name="username"
+          />
+
+          <Controller
+            control={control}
+            rules={{
+              required: true,
+            }}
+            render={({ field: { onChange, onBlur, value } }) => (
+              <InputBox
+                onBlur={onBlur}
+                containerStyles={{ marginTop: 50 }}
+                onChangeText={onChange}
+                placeholder="••••••••"
+                label='Password'
+                value={value}
+                secureTextEntry={true}
+                error={errors.password}
+              />
+            )}
+            name="password"
+          />
+        </View>
+
+      </ScrollView>
+
+      <KeyboardAvoidingView
+        behavior="position"
+        style={{ alignSelf: "center", }}
+        keyboardVerticalOffset={50}
+      >
+
+        <View style={{ backgroundColor: "transparent", width: SCREEN_WIDTH, height: 100, paddingVertical: 20 }}>
           {
             !!responseError ?
               <Text style={{ alignSelf: "center", color: "red", marginBottom: 20 }}>{responseError}</Text>
@@ -121,8 +133,7 @@ const SignInView = () => {
         </View>
 
       </KeyboardAvoidingView>
-
-    </ScrollView>
+    </>
   )
 }
 
